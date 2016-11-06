@@ -24,7 +24,7 @@ public class Text {
 
     private String clean(String data) {
 
-        String[][] splitter = {{"/", "\n"}, {"  ", " "}, {"\r", "\n"}, {" \n", "\n"}, {"\n\n", "\n"}, {"\n ", "\n"}};
+        String[][] splitter = {{"/", "\n"}, {"  ", " "}, {"\t", " "}, {"\r", "\n"}, {" \n", "\n"}, {"\n\n", "\n"}, {"\n ", "\n"}};
 
         for(String s[]: splitter) {
             while (data.contains(s[0])) {
