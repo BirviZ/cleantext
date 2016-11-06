@@ -23,9 +23,18 @@ public class Text {
     }
 
     private String clean(String data) {
-        String text = data;
 
-        return text;
+        String[][] splitter = {{"/", "\n"}, {"  ", " "}, {"\r", "\n"}, {" \n", "\n"}, {"\n\n", "\n"}, {"\n ", "\n"}};
+
+        for(String s[]: splitter) {
+            while (data.contains(s[0])) {
+                data = data.replaceAll(s[0], s[1]);
+            }
+        }
+
+        data = data.trim();
+
+        return data;
     }
 
     @Override
