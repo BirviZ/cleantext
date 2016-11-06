@@ -17,8 +17,8 @@ public class Main {
             files[i] = new File(new IO(true, args[i]), new Text(new IO(true, args[i]).get()));
         }
 
-        for (int i = 0; i < files.length; i++) {
-            IO.writeln(files[i].text.toString());
+        for (File file : files) {
+            new IO(true, "_" + file.file.getName()).send(file.text.toString());
         }
     }
 
