@@ -18,6 +18,10 @@ public class Text {
         this.text = this.text.concat(data);
     }
 
+    public void replaceAllContent(String data) {
+        this.text = data;
+    }
+
     private String clean(String data) {
         String text = data;
 
