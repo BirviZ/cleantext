@@ -5,11 +5,11 @@ import org.birviz.io.IO;
 public class Main {
 
     public static void main(String[] args) {
-	    IO test = new IO(false, "console");
 
-        Text text = new Text(test.get());
-
-        test.send(text.toString());
+        if (args.length == 0) {
+            IO.writeln("No input files");
+            System.exit(0);
+        }
 
         File files[] = new File[args.length];
 
@@ -22,17 +22,9 @@ public class Main {
         private IO file;
         private Text text;
 
-        public File(IO file, Text text) {
+        File(IO file, Text text) {
             this.file = file;
             this.text = text;
-        }
-
-        public IO getFile() {
-            return file;
-        }
-
-        public Text getText() {
-            return text;
         }
     }
 }
