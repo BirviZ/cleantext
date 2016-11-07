@@ -24,12 +24,22 @@ public class Text {
 
     private String clean(String data) {
 
-        String[][] splitter = {{"/", "\n"}, {"  ", " "}, {"\t", " "}, {"\r", "\n"}, {" \n", "\n"}, {"\n\n", "\n"}, {"\n ", "\n"}};
+        String[][] splitter = {
+            {"\\\\", "\n"},
+            {"/", "\n"},
+            {"\t", " "},
+            {" +", " "},
+            {"\r", "\n"},
+            {" \n", "\n"},
+            {"\n+", "\n"},
+            {"\n ", "\n"},
+            {"\n.\n", "\n"},
+            {"- ", "-"},
+            {" -", "-"}
+        };
 
         for(String s[]: splitter) {
-            while (data.contains(s[0])) {
-                data = data.replaceAll(s[0], s[1]);
-            }
+            data = data.replaceAll(s[0], s[1]);
         }
 
         data = data.trim();
