@@ -22,6 +22,7 @@ public class Text {
 
     @Override
     public String toString() {
+
         return clean(this.text);
     }
 }

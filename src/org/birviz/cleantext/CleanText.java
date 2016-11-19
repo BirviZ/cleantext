@@ -36,16 +36,14 @@ public class CleanText {
                 return;
             }
 
-//            if (a.equals("-v")) {
-//
-//
-//
-//                try {
-//                    Logger.streams = new PrintStream[]{System.out, new PrintStream(new FileOutputStream(new File("log.log"), true))};
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
-//                }
-//            }
+            if (a.equals("-v")) {
+
+                try {
+                    Logger.streams = new PrintStream[]{System.out, new PrintStream(new FileOutputStream(new File("log.log"), true))};
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
 
             if (a.equals("-sokolenko")) {
                 symbols = new String[][]{
@@ -62,12 +60,16 @@ public class CleanText {
                         {" -", "-"}
                 };
             }
+        }
+
+        for(String a: args) {
 
             if (a.charAt(0) != '-') {
                 try {
                     fileItems.add(new FileItem(a, symbols));
+                    Logger.write("File ".concat(a).concat(" read success."), LogPrefix.INFO);
                 } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+                    Logger.write("File ".concat(a).concat(" not found."), LogPrefix.ERR);
                 }
             }
         }
@@ -79,10 +81,9 @@ public class CleanText {
                 ps.println(fileItem.getCorrect());
                 ps.close();
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                Logger.write("File ".concat(fileItem.getName()).concat(" not found."), LogPrefix.ERR);
             }
 
         }
-        Logger.write(LogPrefix.INFO.prefix.concat("Complete"));
     }
 }
