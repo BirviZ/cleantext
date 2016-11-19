@@ -1,6 +1,6 @@
 package org.birviz.cleantext;
 
-import org.birviz.util.Text;
+import org.birviz.util.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +16,7 @@ class FileItem {
     FileItem(String name, String[][] symbols) throws FileNotFoundException {
         this.file = new File(name);
         this.name = file.getName();
-        this.path = file.getAbsolutePath();
+        this.path = file.getParent();
         readText();
         correct = new Text(text, symbols);
     }
@@ -30,7 +30,10 @@ class FileItem {
     }
 
     String getCorrect() {
-        return correct.toString();
+        Logger.write("File ".concat(getName()).concat(" start conversion."), LogPrefix.INFO);
+        String s = correct.toString();
+        Logger.write("File ".concat(getName()).concat(" convert success."), LogPrefix.INFO);
+        return s;
     }
 
     private void readText() throws FileNotFoundException {
