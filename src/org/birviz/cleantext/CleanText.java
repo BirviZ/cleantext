@@ -3,7 +3,10 @@ package org.birviz.cleantext;
 import org.birviz.util.LogPrefix;
 import org.birviz.util.Logger;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class CleanText {
@@ -30,7 +33,7 @@ public class CleanText {
 
         Logger.streams = new PrintStream[]{System.out};
 
-        for(String a: args) {
+        for (String a : args) {
             if (a.equals("-help")) {
                 System.out.println("Help");
                 return;
@@ -63,7 +66,7 @@ public class CleanText {
             }
         }
 
-        for(String a: args) {
+        for (String a : args) {
 
             if (a.charAt(0) != '-') {
                 try {
@@ -76,7 +79,7 @@ public class CleanText {
         }
 
         for (FileItem fileItem : fileItems) {
-            String file = fileItem.getPath().concat(File.separator).concat("correct_".concat(fileItem.getName()));
+            String file = fileItem.getPath().concat("correct_".concat(fileItem.getName()));
             try {
                 PrintStream ps = new PrintStream(new FileOutputStream(file));
                 ps.println(fileItem.getCorrect());
@@ -85,7 +88,6 @@ public class CleanText {
             } catch (FileNotFoundException e) {
                 Logger.write("File ".concat(fileItem.getName()).concat(" not found."), LogPrefix.ERR);
             }
-
         }
     }
 }

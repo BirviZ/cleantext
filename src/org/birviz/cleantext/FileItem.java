@@ -1,6 +1,8 @@
 package org.birviz.cleantext;
 
-import org.birviz.util.*;
+import org.birviz.util.LogPrefix;
+import org.birviz.util.Logger;
+import org.birviz.util.Text;
 
 import java.io.File;
 import java.io.FileNotFoundException;

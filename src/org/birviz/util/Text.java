@@ -11,7 +11,7 @@ public class Text {
 
     private String clean(String data) {
 
-        for(String s[]: splitter) {
+        for (String s[] : splitter) {
             data = data.replaceAll(s[0], s[1]);
         }
 
