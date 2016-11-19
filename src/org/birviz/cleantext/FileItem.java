@@ -40,6 +40,6 @@ class FileItem {
 
     private void readText() throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
-        while (scanner.hasNext()) text = text.concat(scanner.nextLine()).concat("\n");
+        while (scanner.hasNext()) text = text.concat(scanner.nextLine()).concat(System.lineSeparator());
     }
 }
