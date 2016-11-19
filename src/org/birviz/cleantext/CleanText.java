@@ -1,5 +1,6 @@
 package org.birviz.cleantext;
 
+import org.birviz.util.LogPrefix;
 import org.birviz.util.Logger;
 
 import java.io.*;
@@ -72,7 +73,7 @@ public class CleanText {
         }
 
         for (FileItem fileItem : fileItems) {
-            String file = fileItem.getPath().concat("correct_").concat(fileItem.getName());
+            String file = fileItem.getPath().concat(File.separator).concat("correct_".concat(fileItem.getName()));
             try {
                 PrintStream ps = new PrintStream(new FileOutputStream(file));
                 ps.println(fileItem.getCorrect());
@@ -82,6 +83,6 @@ public class CleanText {
             }
 
         }
-        Logger.write("Complete");
+        Logger.write(LogPrefix.INFO.prefix.concat("Complete"));
     }
 }
