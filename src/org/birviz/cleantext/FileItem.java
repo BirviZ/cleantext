@@ -16,7 +16,7 @@ class FileItem {
     FileItem(String name, String[][] symbols) throws FileNotFoundException {
         this.file = new File(name);
         this.name = file.getName();
-        this.path = file.getParent();
+        this.path = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - this.name.length());
         readText();
         correct = new Text(text, symbols);
     }
