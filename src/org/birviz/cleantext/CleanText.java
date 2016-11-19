@@ -39,7 +39,8 @@ public class CleanText {
             if (a.equals("-v")) {
 
                 try {
-                    Logger.streams = new PrintStream[]{System.out, new PrintStream(new FileOutputStream(new File("log.log"), true))};
+                    String logFile = "cleantext.log";
+                    Logger.streams = new PrintStream[]{System.out, new PrintStream(new FileOutputStream(new File(logFile), true))};
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -79,6 +80,7 @@ public class CleanText {
             try {
                 PrintStream ps = new PrintStream(new FileOutputStream(file));
                 ps.println(fileItem.getCorrect());
+                Logger.write("File ".concat(file).concat(" write success."), LogPrefix.INFO);
                 ps.close();
             } catch (FileNotFoundException e) {
                 Logger.write("File ".concat(fileItem.getName()).concat(" not found."), LogPrefix.ERR);

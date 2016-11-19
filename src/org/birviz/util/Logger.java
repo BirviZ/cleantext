@@ -9,8 +9,8 @@ public class Logger {
     public static void write(String mess, LogPrefix prefix) {
 
         int len = prefix.prefix.length() + mess.length();
-        String format = "%s\n%"+len+"s\n";
-        String message = String.format(format, prefix.prefix, mess);
+        String format = "%s%s\n%"+len+"s\n";
+        String message = String.format(format, prefix.prefix, new java.util.Date().toString(), mess);
         for (int i = 0; i < len; i++) message = message.concat("-");
 
         send(message);
