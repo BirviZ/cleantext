@@ -16,7 +16,7 @@ public class CleanText {
         if (args.length == 0) {
             System.out.println("Bad arguments");
             System.out.println("Example: java -jar text.txt");
-            System.out.println("Or --help for help");
+            System.out.println("-v for log file");
             return;
         }
 
@@ -34,11 +34,6 @@ public class CleanText {
         Logger.streams = new PrintStream[]{System.out};
 
         for (String a : args) {
-            if (a.equals("-help")) {
-                System.out.println("Help");
-                return;
-            }
-
             if (a.equals("-v")) {
 
                 try {
@@ -49,7 +44,7 @@ public class CleanText {
                 }
             }
 
-            if (a.equals("-sokolenko")) {
+            if (a.equals("-s")) {
                 symbols = new String[][]{
                         {"\\\\", "\n"},
                         {"/", "\n"},
