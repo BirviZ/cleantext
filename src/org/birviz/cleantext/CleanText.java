@@ -76,8 +76,11 @@ public class CleanText {
         for (FileItem fileItem : fileItems) {
             String file = fileItem.getPath().concat("correct_".concat(fileItem.getName()));
             try {
+                String[] text = fileItem.getCorrect().split("\n");
                 PrintStream ps = new PrintStream(new FileOutputStream(file));
-                ps.println(fileItem.getCorrect());
+                for(String line : text) {
+                    ps.println(line);
+                }
                 Logger.write("File ".concat(file).concat(" write success."), LogPrefix.INFO);
                 ps.close();
             } catch (FileNotFoundException e) {

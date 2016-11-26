@@ -15,7 +15,6 @@ public class Text {
             data = data.replaceAll(s[0], s[1]);
         }
 
-        data.replaceAll("\n", System.lineSeparator());
         data = data.trim();
 
         return data;
